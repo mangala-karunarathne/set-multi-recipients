@@ -13,6 +13,10 @@ Copy-Item src\index.js index.js
 ```
 Compress-Archive index.js, package.json build-recipients.zip 
 ```
+### Make sure the zip file contais only `index.js` and `package.json`
+```
+ tar -tf email-function.zip 
+```
 ### Remove the index.json from the root directory to avoid confusion for anyone refer the code later.
 ```
 Remove-Item index.js
