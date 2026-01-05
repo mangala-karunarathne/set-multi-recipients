@@ -1,4 +1,4 @@
-exports.buildRecipients = async ({ to, cc, bcc }) => {
+exports.buildRecipients = async ({ to, cc, bcc, subject }) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const buildRecipients = (emails = "") =>
@@ -11,8 +11,9 @@ exports.buildRecipients = async ({ to, cc, bcc }) => {
       }));
 
   return {
+    subject: subject,
     toRecipients: buildRecipients(to),
-    ccRecipients: buildRecipients(cc),
+    ccRecipients: buildRecipients(cc),  
     bccRecipients: buildRecipients(bcc),
   };
 };
