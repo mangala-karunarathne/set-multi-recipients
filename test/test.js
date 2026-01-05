@@ -1,20 +1,15 @@
-const { buildRecipients } = require("../src/index");
+const { buildRecipients } = require("../src/index.js");
 
-async function runTests() {
-  try {
-    const result = await buildRecipients({
-      to: "valid@test.com, bad@@test",
-      cc: "cc1@test.com, 2",
-      bcc: "bcc1@test.com, bcc1@",
-    });
+const testBuildRecipients = async () => {
+  const input = {
+    subject: "Hello",
+    to: "mk@gmail.com, ab@gmail.com",
+    cc: "cc@test.com",
+    bcc: "mk@gmail.com",
+  };
 
-    console.log("✅ SUCCESS:");
-    console.dir(result, { depth: null });
+  const result = await buildRecipients(input);
+  console.log(JSON.stringify(result, null, 2));
+};
 
-  } catch (err) {
-    console.error("❌ ERROR:");
-    console.error(err.message);
-  }
-}
-
-runTests();
+testBuildRecipients();
